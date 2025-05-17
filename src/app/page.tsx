@@ -20,7 +20,7 @@ export default function Home() {
     console.log(sum);
 
     const x = prompt('入力してください');
-    const input2: number = Number(n);
+    const input2: number = Number(x);
     const sumToN = (x: number): number =>
       Array.from({ length: x }, (_, i) => i + 1).reduce((a, b) => a + b, 0);
     console.log(sumToN(input2));
@@ -97,6 +97,24 @@ export default function Home() {
     console.log(fibSeq(5));
     console.log(fibSeq(10));
 
+    // 再帰関数フィボナッチ数列
+    const fib2 = (n: number): number => {
+      if (n === 0) return 0;
+      if (n === 1) return 1;
+      return fib2(n - 1) + fib2(n - 2);
+    };
+    const fib2List = (n: number): number[] => {
+      const result: number[] = [];
+      for (let i = 0; i <= n; i++) {
+        result.push(fib2(i));
+      }
+      return result;
+    };
+
+    console.log(fib2List(1));
+    console.log(fib2List(5));
+    console.log(fib2List(10));
+
     // aとbを合体して配列
     const zip = <T, U>(a: T[], b: U[]): [T, U][] => {
       const length = Math.min(a.length, b.length);
@@ -124,6 +142,7 @@ export default function Home() {
     };
     console.log(deepFlatten([1, [2, [3, 4], 5], 6]));
 
+    // 階乗
     const factirual = (n: number): number => {
       let result = 1;
       for (let i = 1; i <= n; i++) {
@@ -133,6 +152,7 @@ export default function Home() {
     };
     console.log(factirual(5));
 
+    // 文字列配列から最長の文字列を出す
     const longest = (length: string[]): string => {
       let result = '';
       for (const i of length) {
@@ -145,6 +165,24 @@ export default function Home() {
     const longest2 = (arr: string[]): string =>
       arr.reduce((a, b) => (b.length > a.length ? b : a), '');
     console.log(longest2(['foo', 'alphabet', 'bar']));
+
+    function unique<T>(array: T[]): T[] {
+      return [...new Set(array)];
+    }
+    console.log(unique([1, 2, 2, 3, 1]));
+
+    // 配列を指定サイズのチャンク（分割）に分ける
+    const chunk = <T,>(array: T[], size: number): T[][] => {
+      const result: T[][] = [];
+      for (let i = 0; i < array.length; i++) {
+        if (i % 2 === 1) continue;
+        result.push(array.slice(i, i + size));
+      }
+      return result;
+    };
+    console.log(chunk([1, 2, 3, 4, 5], 2));
+
+    
   }, []);
 
   return (
