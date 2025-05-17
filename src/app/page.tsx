@@ -182,7 +182,62 @@ export default function Home() {
     };
     console.log(chunk([1, 2, 3, 4, 5], 2));
 
-    
+    // numにtargetがあったらインデックスを返す
+    const binarySearch = (num: number[], target: number) => {
+      for (let i = 0; i < num.length; i++) {
+        if (num[i] === target) {
+          return i;
+        }
+      }
+      return -1;
+    };
+    console.log(binarySearch([1, 2, 4, 7, 9], 4));
+    console.log(binarySearch([1, 2, 4, 7, 9], 5));
+    console.log(binarySearch([], 3));
+
+    const binarySearch2 = (num: number[], target: number) => {
+      const numIndex = num
+        .map((value, index) => ({ value, index }))
+        .filter((i) => i.value === target)
+        .map((i) => i.index);
+
+      return numIndex.length > 0 ? numIndex[0] : -1;
+    };
+    console.log(binarySearch2([1, 2, 4, 7, 9], 4));
+    console.log(binarySearch2([1, 2, 4, 7, 9], 5));
+    console.log(binarySearch2([], 3));
+
+    const binarySearch3 = (nums: number[], target: number): number => {
+      return nums.indexOf(target);
+    };
+    console.log(binarySearch3([1, 2, 4, 7, 9], 4));
+    console.log(binarySearch3([1, 2, 4, 7, 9], 5));
+    console.log(binarySearch3([], 3));
+
+    const binarySearch4 = (nums: number[], target: number): number => {
+      let low = 0,
+        high = nums.length - 1;
+      while (low <= high) {
+        const mid = Math.floor((low + high) / 2);
+        if (nums[mid] === target) {
+          return mid;
+        } else if (nums[mid] < target) {
+          low = mid + 1;
+        } else {
+          high = mid - 1;
+        }
+      }
+      return -1;
+    };
+    console.log(binarySearch4([1, 2, 4, 7, 9], 4));
+    console.log(binarySearch4([1, 2, 4, 7, 9], 5));
+    console.log(binarySearch4([], 3));
+
+    const binarySearch5 = (nums: number[], target: number): number =>
+      nums.findIndex((value) => value === target);
+    console.log(binarySearch5([1, 2, 4, 7, 9], 4));
+    console.log(binarySearch5([1, 2, 4, 7, 9], 5));
+    console.log(binarySearch5([], 3));
   }, []);
 
   return (
