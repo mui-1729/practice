@@ -40,7 +40,6 @@ export default function Home() {
       return num.some((num) => num > threshold);
     };
     console.log(anyOver([1, 5, 3], 4));
-    console.log(anyOver([1, 2, 3], 4));
 
     // 配列の中の文字列にsufを足す
     const addSuffix = (words: string[], suf: string): string[] => {
@@ -93,8 +92,6 @@ export default function Home() {
       }
       return result;
     };
-    console.log(fibSeq(1));
-    console.log(fibSeq(5));
     console.log(fibSeq(10));
 
     // 再帰関数フィボナッチ数列
@@ -103,6 +100,7 @@ export default function Home() {
       if (n === 1) return 1;
       return fib2(n - 1) + fib2(n - 2);
     };
+
     const fib2List = (n: number): number[] => {
       const result: number[] = [];
       for (let i = 0; i <= n; i++) {
@@ -110,9 +108,6 @@ export default function Home() {
       }
       return result;
     };
-
-    console.log(fib2List(1));
-    console.log(fib2List(5));
     console.log(fib2List(10));
 
     // aとbを合体して配列
@@ -124,7 +119,6 @@ export default function Home() {
       }
       return result;
     };
-    console.log(zip([1, 2, 3], ['a', 'b']));
     console.log(zip([true, false], [10, 20, 30]));
 
     // n次元配列を1次元配列に
@@ -192,8 +186,6 @@ export default function Home() {
       return -1;
     };
     console.log(binarySearch([1, 2, 4, 7, 9], 4));
-    console.log(binarySearch([1, 2, 4, 7, 9], 5));
-    console.log(binarySearch([], 3));
 
     const binarySearch2 = (num: number[], target: number) => {
       const numIndex = num
@@ -204,15 +196,11 @@ export default function Home() {
       return numIndex.length > 0 ? numIndex[0] : -1;
     };
     console.log(binarySearch2([1, 2, 4, 7, 9], 4));
-    console.log(binarySearch2([1, 2, 4, 7, 9], 5));
-    console.log(binarySearch2([], 3));
 
     const binarySearch3 = (nums: number[], target: number): number => {
       return nums.indexOf(target);
     };
     console.log(binarySearch3([1, 2, 4, 7, 9], 4));
-    console.log(binarySearch3([1, 2, 4, 7, 9], 5));
-    console.log(binarySearch3([], 3));
 
     const binarySearch4 = (nums: number[], target: number): number => {
       let low = 0,
@@ -229,15 +217,62 @@ export default function Home() {
       }
       return -1;
     };
-    console.log(binarySearch4([1, 2, 4, 7, 9], 4));
     console.log(binarySearch4([1, 2, 4, 7, 9], 5));
-    console.log(binarySearch4([], 3));
 
     const binarySearch5 = (nums: number[], target: number): number =>
       nums.findIndex((value) => value === target);
-    console.log(binarySearch5([1, 2, 4, 7, 9], 4));
     console.log(binarySearch5([1, 2, 4, 7, 9], 5));
-    console.log(binarySearch5([], 3));
+
+    // 1-n出力
+    const printNumber = (n: number) => {
+      for (let i = 1; i <= n; i++) {
+        console.log(i);
+      }
+    };
+    printNumber(5);
+
+    // あいさつ
+    const greet = (name: string): string => {
+      return `Hello, ${name}!`;
+    };
+    console.log(greet('Alice'));
+
+    // 二乗
+    const squareList = (nums: number[]): number[] => {
+      return nums.map((i) => i ** 2);
+    };
+    console.log(squareList([1, 2, 3]));
+
+    // 奇数
+    const filterOdds = (nums: number[]): number[] => {
+      return nums.filter((nums) => nums % 2 === 1);
+    };
+    console.log(filterOdds([1, 2, 3, 4, 5]));
+
+    // 区切り文字で連結
+    const joinWithSep = (word: string[], sep: string) => {
+      const result = [];
+      for (const i of word) {
+        result.push(i);
+      }
+      return result.join(sep);
+    };
+    console.log(joinWithSep(['a', 'b', 'c'], '-'));
+
+    // 文字長さリスト
+    const wordLengths = (words: string[]): number[] => {
+      const result = [];
+      for (const word of words) {
+        result.push(word.length);
+      }
+      return result;
+    };
+    console.log(wordLengths(['hi', 'TypeScript', 'JS']));
+
+    const wordLengths2 = (words: string[]): number[] => {
+      return words.map((w) => w.length);
+    };
+    console.log(wordLengths2(['hi', 'TypeScript', 'JS']));
   }, []);
 
   return (
