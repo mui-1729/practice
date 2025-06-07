@@ -395,8 +395,6 @@ export default function Home() {
     console.log(isInArray(numberArray, 10));
     console.log(isInArray(stringArray, 'banana'));
     console.log(isInArray(stringArray, 'grape'));
-
-    
   }, []);
   return (
     <div className={styles.container}>
