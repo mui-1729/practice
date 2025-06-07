@@ -273,8 +273,131 @@ export default function Home() {
       return words.map((w) => w.length);
     };
     console.log(wordLengths2(['hi', 'TypeScript', 'JS']));
-  }, []);
 
+    const calc = (first: number, last: number): number => {
+      return ((first + last) * (last - first + 1)) / 2;
+    };
+    console.log(calc(3, 10));
+
+    // あいさつ
+    const greet2 = (name: string): string => {
+      return `こんにちは${name}さん！`;
+    };
+    console.log(greet2('鈴木'));
+
+    // 税率計算
+    const calcPriceWithTax = (price: number, taxRate: number = 0.1): number => {
+      return price + price * taxRate;
+    };
+    console.log(calcPriceWithTax(1000));
+    console.log(calcPriceWithTax(1000, 0.08));
+
+    // ユーザ情報を整形
+    interface User {
+      id: number;
+      name: string;
+      email?: string;
+    }
+    const user: User = {
+      id: 101,
+      name: '山田太郎',
+      email: 'yamada@example.com',
+    };
+    const formatUser = (User: User) => {
+      return `「ID:[${User.id}], Name:[${User.name}]」`;
+    };
+    console.log(formatUser(user));
+
+    //数値配列から偶数を抽出
+    const originalNumbers = [1, 2, 3, 4, 5, 6];
+    const filterEvenNumbers = (numbers: number[]): number[] => {
+      return numbers.filter((num) => num % 2 === 0);
+    };
+    console.log(filterEvenNumbers(originalNumbers));
+
+    //ユーザ名の配列作成
+    interface User {
+      id: number;
+      name: string;
+      email?: string;
+    }
+    const users: User[] = [
+      { id: 1, name: '佐藤' },
+      { id: 2, name: '鈴木' },
+      { id: 3, name: '高橋' },
+    ];
+    const getUserNames = (users: User[]): string[] => {
+      return users.map((user) => user.name);
+    };
+    console.log(getUserNames(users));
+
+    //入力の型によって処理を分ける関数
+    const processInput = (i: string | number): string | number => {
+      if (typeof i === 'string') {
+        return i.toUpperCase();
+      } else if (typeof i === 'number') {
+        return i * 2;
+      } else return i;
+    };
+    console.log(processInput('hello'));
+    console.log(processInput(123));
+
+    interface Product {
+      id: string;
+      name: string;
+      details?: {
+        price?: number;
+        description?: string;
+      };
+    }
+    const productA: Product = {
+      id: 'a-001',
+      name: '高性能マウス',
+      details: {
+        price: 5000,
+        description: '快適な操作性を提供します。',
+      },
+    };
+    const productB: Product = {
+      id: 'b-002',
+      name: 'メカニカルキーボード',
+      details: {
+        description: '打鍵感が特徴です。', // priceがない
+      },
+    };
+    const productC: Product = {
+      id: 'c-003',
+      name: '4Kモニター', // details自体がない
+    };
+    const getProductPrice = (product: Product): string => {
+      if (product.details?.price !== undefined) {
+        return `価格:[${product.details.price}]円`;
+      } else {
+        return '価格情報なし';
+      }
+    };
+    console.log(getProductPrice(productA));
+    console.log(getProductPrice(productB));
+    console.log(getProductPrice(productC));
+
+    // const isInArray = <T,>(array: T[], itemToFind: T): boolean => {
+    //   for (let i = 0; i < array.length; i++) {
+    //     if (array[i] === itemToFind) return true;
+    //   }
+    //   return false;
+    // };
+    const isInArray = <T,>(array: T[], itemToFind: T) => {
+      return array.includes(itemToFind);
+    };
+    const numberArray: number[] = [1, 2, 3, 4, 5];
+    const stringArray: string[] = ['apple', 'banana', 'cherry'];
+    console.log(isInArray(numberArray, 3));
+    console.log(isInArray(numberArray, 10));
+    console.log(isInArray(stringArray, 'banana'));
+    console.log(isInArray(stringArray, 'grape'));
+
+    
+  }, []);
   return (
     <div className={styles.container}>
       <button onClick={click}> ボタン </button>
